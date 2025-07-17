@@ -1,2 +1,26 @@
-# Data-Structures-and-Algorithms
-My personal DSA journey — solving problems from arrays, linked lists, trees, graphs, dynamic programming, and more. Practicing for coding interviews and improving problem-solving skills.
+# Data Structures & Algorithms Practice Repository
+
+This repository contains my personal practice of Data Structures and Algorithms (DSA) using C++.
+
+## Contents
+
+- Arrays
+- Strings
+- Linked Lists
+- Stacks & Queues
+- Trees & Binary Search Trees
+- Graphs
+- Dynamic Programming
+- Sorting Algorithms
+- Searching Algorithms
+- Pattern Problems
+
+## Purpose
+
+- Daily DSA practice for improving problem-solving skills.
+- Preparing for coding interviews and competitive programming.
+- All solutions written in C++ with clean and readable code.
+
+---
+
+Feel free to explore and suggest improvements!

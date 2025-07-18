@@ -55,7 +55,7 @@ return max;
   }
 
 
-  // Find Average Of Array
+  // Find Average Of Array"
 
   void Average(int arr[],int size){
     int sum=0;

@@ -349,6 +349,104 @@ void del_pos(int arr[],int& size){
     show(arr,size);
 }
 
+//Median
+
+//void Median(int arr[],int size)
+// merge 2 sorted arrays and find median:
+void merge(){
+    int arr1[]={1,3,4,5};
+    int arr2[]={2,4,5,7};
+    int i=0,j=0;
+    int k=0;
+    int n = sizeof(arr1) / sizeof(arr1[0]);
+    int m = sizeof(arr2) / sizeof(arr2[0]);
+    int merged_size= int(n+m);
+     int merged[n+m];
+     while(i<n && j<m){
+        if(arr1[i]<=arr2[j]){
+            merged[k++]=arr1[i++];
+        }else {
+            merged[k++] = arr2[j++];
+     }}
+     // Copy remaining elements from arr1 (if any)
+       while (i < n) {
+        merged[k++] = arr1[i++];
+    }
+
+    // Copy remaining elements from arr2 (if any)
+    while (j < m) {
+        merged[k++] = arr2[j++];
+    }
+   cout << "Merged Array: {";
+    for (int x = 0; x < n + m; x++) {
+        cout << merged[x] ;
+        if (x != n+m - 1)
+            cout << ", ";
+    }
+    cout<<"}" << endl;
+    cout<<"Median is: ";
+    if((n+m)%2==0){
+        int mid1=(n+m)/2-1;
+        int mid2=(n+m)/2;
+        cout<<(merged[mid1] + merged[mid2])/2<<endl;
+    } else{
+        int mid=(n+m)/2;
+        cout<<merged[mid]<<endl;
+
+    }
+    
+}
+
+ // better aproach
+ int getMin(int arr1[], int size1, int arr2[], int size2,int& p1,int& p2){
+    
+    
+    int total= int(size1+size2);
+
+    if (p1 < size1 && p2 < size2) {
+            if (arr1[p1] < arr2[p2]) {
+                return arr1[p1++];
+            } else {
+                return arr2[p2++];
+            }
+        } else if (p1 < size1) {
+        return arr1[p1++];
+        } else if (p2 < size2) {
+            return arr2[p2++];
+        }
+       // return-1; // Shouldn't reach here
+    }
+
+    void findMedianSortedArrays(int arr1[], int size1, int arr2[], int size2) {
+        int p1 = 0;  // Reset pointers each time before merging
+    int p2 = 0;
+        int total = size1 + size2;
+
+        if (total % 2 == 0) {
+            for (int i = 0; i < total / 2 - 1; ++i) {
+                int temp = getMin(arr1,size1,arr2,size2,p1,p2);
+            }
+            int first = getMin(arr1,size1,arr2,size2,p1,p2);
+            int second = getMin(arr1,size1,arr2,size2,p1,p2);
+            cout<<"Median: "<<(first + second) / 2;
+        } else {
+            for (int i = 0; i < total / 2; ++i) {
+                int temp = getMin(arr1,size1,arr2,size2,p1,p2);
+            }
+            int get=getMin(arr1,size1,arr2,size2,p1,p2);
+        cout<<"Median: "<< get;
+        
+        }
+        cout<<endl;
+    }
+
+
+
+
+
+
+
+
 int main()
 {
     int size, choice;
@@ -357,12 +455,17 @@ int main()
     int n = 100;
 
     int arr[n];
-
+     
     cout << "Enter " << size << " Elements: ";
     for (int i = 0; i < size; i++)
     {
         cin >> arr[i];
     }
+
+    int arr1[]={1,3,4,5};
+    int arr2[]={2,4,5,7};
+      int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
 
     cout << "\n---- MENU ----" << "\n\n";
     cout<<"1.show the element"<<endl;
@@ -383,7 +486,9 @@ int main()
     cout << "16. Delete at Last" << endl;
     cout << "17. Delete at Beginning" << endl;
     cout << "18. Delete at position" << endl;
-    cout << "19. Exiting...."<< endl;
+    cout<<"19. Merge 2 sorted arrays and find the median"<<endl;
+    cout<<"20. Median of 2 sorted arrays using merge sort"<<endl;
+    cout << "21. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -454,8 +559,9 @@ int main()
 
             case 17:del_beg(arr,size);break;
         case 18: del_pos(arr,size);break;
-
-            case 19:
+        case 19:merge();break;
+case 20: findMedianSortedArrays(arr1, size1, arr2, size2);break;
+            case 21:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -463,7 +569,9 @@ int main()
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 19);
+    } while (choice != 21);
 
     return 0;
 }
+
+

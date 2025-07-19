@@ -1,2 +1,3 @@
-cout << "Enter your choice: ";
-        // cin >> choice;
+
+    int arr[]={1,2,3,4,5};
+    

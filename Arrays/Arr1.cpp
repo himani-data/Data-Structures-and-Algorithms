@@ -82,20 +82,44 @@ void Sum_Product_of_min_and_max(int arr[], int size)
 }
 
 //  Reverse Traversal of Array
-void Reverse_Traversal(int arr[], int n)
-{
-    cout << "Reevrse Array is : " << "{";
-    for (int i = n - 1; i >= 0; i--)
-    {
-        cout << arr[i];
+// void Reverse_Traversal(int arr[], int n)
+// {
+//     cout << "Revrse Array is : " << "{";
+//     for (int i = n - 1; i >= 0; i--)
+//     {
+//         cout << arr[i];
 
-        if (i != 0)
-        {
-            cout << ", ";
-        }
+//         if (i != 0)
+//         {
+//             cout << ", ";
+//         }
+//     }
+//     cout << " }" << "\n\n";
+
+//     cout << "Array reversed successfully.\n";
+// }
+
+
+
+//Actually reversing array
+void Reverse_Array(int arr[], int size) {
+    int start = 0;
+    int end = size - 1;
+
+    while (start < end) {
+        // Swap elements
+        // int temp = arr[start];
+        // arr[start] = arr[end];
+        // arr[end] = temp;
+swap(arr[start],arr[end]);
+        start++;
+        end--;
     }
-    cout << " }" << "\n\n";
+
+    cout << "Array reversed successfully.\n";
+    show(arr,size);
 }
+
 
 // insert at begining
 
@@ -120,7 +144,7 @@ void insert_at_beginning(int arr[], int &size)
 }
 
 // insert at given position
-void insert_at_pos(int arr[], int size)
+void insert_at_pos(int arr[], int& size)
 {
     int pos, elem;
     cout << "Enter at which position/Index you want to insert Element :";
@@ -236,7 +260,7 @@ void two_ptr(int arr[], int size)
 
     int start = 0;
     int end = size - 1;
-
+// sort takes 2 argument start,end(Range)
     sort(arr, arr + size);
 
     while (start < end)
@@ -283,6 +307,48 @@ void optimal(int arr[], int size)
     cout << "No such pair found.\n";
 }
 
+// Delete from last
+void del_last(int arr[],int& size){
+    if (size == 0) {
+        cout << "Array is already empty.\n";
+        return;
+    }
+    size--;
+        cout << "Element deleted from End.\n Your array after deletion: ";
+    show(arr,size);
+}
+
+// Delete from Beginning
+void del_beg(int arr[],int& size){
+    if (size == 0) {
+        cout << "Array is already empty.\n";
+        return;
+    }
+    for(int i=0;i<size;i++){
+         arr[i]=arr[i+1];
+    }
+    size--;
+    cout << "Element deleted from  Begining.\n Your array after deletion: ";
+    show(arr,size);
+}
+
+// Delete Elem from given position
+void del_pos(int arr[],int& size){
+    if (size == 0) {
+        cout << "Array is already empty.\n";
+        return;
+    }
+    int indx;
+    cout<<"Enter which indx element do you want to delete: ";
+    cin>>indx;
+        for(int i=indx;i<size-1;i++){
+         arr[i]=arr[i+1];
+    }
+    size--;
+    cout << "Element deleted from pos.\n Your array after deletion: ";
+    show(arr,size);
+}
+
 int main()
 {
     int size, choice;
@@ -299,22 +365,25 @@ int main()
     }
 
     cout << "\n---- MENU ----" << "\n\n";
-
-    cout << "1. Find Minimum Element" << endl;
-    cout << "2. Find Maximum Element" << endl;
-    cout << "3. Find Sum of Array" << endl;
-    cout << "4. Find Average of Array" << endl;
-    cout << "5.Sum_Product_of_min_and_max" << endl;
-    cout << "6. Reverse_Traversal" << endl;
-    cout << "7. Insert at Beginning" << endl;
-    cout << "8. Insert at Position" << endl;
-    cout << "9. Insert at Last" << endl;
-    cout << "10. Find The Elem in Array " << endl;
-    cout << "11. Binary Search" << endl;
-    cout << "12. Two_Sum brute force" << endl;
-    cout << "13. Two_Sum 2 pointer" << endl;
-    cout << "14. Two_Sum optimal" << endl;
-    cout << "15. Exit" << endl;
+    cout<<"1.show the element"<<endl;
+    cout << "2. Find Minimum Element" << endl;
+    cout << "3. Find Maximum Element" << endl;
+    cout << "4. Find Sum of Array" << endl;
+    cout << "5. Find Average of Array" << endl;
+    cout << "6.Sum_Product_of_min_and_max" << endl;
+    cout << "7. Reverse_Traversal" << endl;
+    cout << "8. Insert at Beginning" << endl;
+    cout << "9. Insert at Position" << endl;
+    cout << "10. Insert at Last" << endl;
+    cout << "11. Find The Elem in Array " << endl;
+    cout << "12. Binary Search" << endl;
+    cout << "13. Two_Sum brute force" << endl;
+    cout << "14. Two_Sum 2 pointer" << endl;
+    cout << "15. Two_Sum optimal" << endl;
+    cout << "16. Delete at Last" << endl;
+    cout << "17. Delete at Beginning" << endl;
+    cout << "18. Delete at position" << endl;
+    cout << "19. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -335,49 +404,58 @@ int main()
         // cout<<endl;
         switch (choice)
         {
-        case 1:
+            case 1:show(arr,size);break;
+        case 2:
             minimum(arr, size);
             break;
-        case 2:
+        case 3:
             maximum(arr, size);
             break;
-        case 3:
+        case 4:
             findSum(arr, size);
             break;
-        case 4:
+        case 5:
             Average(arr, size);
             break;
-        case 5:
+        case 6:
             Sum_Product_of_min_and_max(arr, size);
             break;
-        case 6:
-            Reverse_Traversal(arr, size);
-            break;
         case 7:
-            insert_at_beginning(arr, size);
+            Reverse_Array(arr, size);
             break;
         case 8:
-            insert_at_pos(arr, size);
+            insert_at_beginning(arr, size);
             break;
         case 9:
-            insert_at_last(arr, size);
+            insert_at_pos(arr, size);
             break;
         case 10:
-            Find_Elem(arr, size);
+            insert_at_last(arr, size);
             break;
         case 11:
-            Binary_search(arr, size);
+            Find_Elem(arr, size);
             break;
         case 12:
-            Two_Sum(arr, size);
+            Binary_search(arr, size);
             break;
         case 13:
-            two_ptr(arr, size);
+            Two_Sum(arr, size);
             break;
         case 14:
-            optimal(arr, size);
+            two_ptr(arr, size);
             break;
         case 15:
+            optimal(arr, size);
+            break;
+    
+    
+        case 16:
+            del_last(arr,size);break;
+
+            case 17:del_beg(arr,size);break;
+        case 18: del_pos(arr,size);break;
+
+            case 19:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -385,7 +463,7 @@ int main()
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 15);
+    } while (choice != 19);
 
     return 0;
 }

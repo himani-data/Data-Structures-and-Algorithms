@@ -441,7 +441,28 @@ void merge(){
     }
 
 
+// Removing elements that is equals to val;
+void remove_elem(int arr[],int size){
+    int k=0;
+    int val;
+    cout<<"Enter Value: "<<endl;
+    cin>>val;
+    for(int i=0;i<size;i++){
+        if(arr[i]!=val){
+            arr[k++]=arr[i];
+        }}
+     cout<<"\n New Array after removing"<<val<<"{";
+     for(int i=0;i<k;i++){
+        cout<<arr[i];
+        if(i!=k-1){
+            cout<<", ";
+        }
+        
+     }
+    cout<<"}\n";
 
+
+}
 
 
 
@@ -488,7 +509,8 @@ int main()
     cout << "18. Delete at position" << endl;
     cout<<"19. Merge 2 sorted arrays and find the median"<<endl;
     cout<<"20. Median of 2 sorted arrays using merge sort"<<endl;
-    cout << "21. Exiting...."<< endl;
+    cout<<"21. Remove elements that are equal to val"<<endl;
+    cout << "22. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -561,7 +583,8 @@ int main()
         case 18: del_pos(arr,size);break;
         case 19:merge();break;
 case 20: findMedianSortedArrays(arr1, size1, arr2, size2);break;
-            case 21:
+case 21: remove_elem(arr,size);break;
+            case 22:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -569,7 +592,7 @@ case 20: findMedianSortedArrays(arr1, size1, arr2, size2);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 21);
+    } while (choice != 22);
 
     return 0;
 }

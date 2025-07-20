@@ -482,6 +482,71 @@ cout<<"Max capacity is: "<<max_capacity<<"\n";
 }
 
 
+//max capacity using 2 ptr aproach
+void max_water_optimal_aproach(int arr[],int size){
+    int p1=0;
+    int p2=size-1;
+    int max_cap=0;
+    while(p1<p2){
+        int w=p2-p1;
+        int ht=min(arr[p1],arr[p2]);
+        int cap=w*ht;
+        max_cap=max(cap,max_cap);
+        arr[p1]<arr[p2]?p1++:p2--;
+    }
+    cout<<"Max capacity is: "<<max_cap<<"\n";
+
+}
+
+
+//kdanes algo---->maximum subarray sum:
+void max_subarray(int arr[],int size){
+    int maxsum=0;
+
+    for(int st=0;st<size;st++){
+        int currSum=0;
+        for(int end=st;end<size;end++){
+            currSum+=arr[end];
+            maxsum=max(currSum,maxsum);
+
+        }   }
+    cout<<maxsum<<endl;
+    //return ;
+}
+//kadanes Algorithm for max sub array
+
+int kadane(int arr[],int size){
+    int curr=0;
+    int maxsum=INT_MIN;
+for(int i=0;i<size;i++){
+    curr+=arr[i];
+    maxsum=max(curr,maxsum);
+    if(curr<0){
+        curr=0;
+    }
+}
+cout<<"Max sum of subarray is: "<<maxsum<<endl;
+}
+
+
+//Buy and sell stock
+void profit(int arr[],int size){
+    int buy=arr[0];
+    int mprofit=0;
+    for(int i=1;i<size;i++){
+        if(arr[i]<buy){
+            buy=arr[i];
+
+        }else{
+            int profit=arr[i]-buy;
+            if(profit>mprofit){
+                mprofit=profit;
+            }
+        }
+
+    }
+    cout<<"Profit is: "<<mprofit<<endl;
+}
 
 int main()
 {
@@ -526,7 +591,11 @@ int main()
     cout<<"20. Median of 2 sorted arrays using merge sort"<<endl;
     cout<<"21. Remove elements that are equal to val"<<endl;
     cout<<"22.Container with most water"<<endl;
-    cout << "23. Exiting...."<< endl;
+    cout<<"23.Max Water Optimal Aproach using 2 ptr"<<endl;
+    cout<<"24.Maximum Subarray Sum (Brute Force)"<<endl;
+    cout<<"25.kadanes Algorithm for max sub array"<<endl;
+    cout<<"26.Buy and sell stock"<<endl;
+    cout << "27. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -601,7 +670,11 @@ int main()
 case 20: findMedianSortedArrays(arr1, size1, arr2, size2);break;
 case 21: remove_elem(arr,size);break;
 case 22: container(arr,size);break;
-            case 23:
+case 23:max_water_optimal_aproach(arr,size);break;
+case 24:  max_subarray(arr,size);break;
+case 25: kadane(arr,size);break;
+case 26: profit(arr,size);break;
+            case 27:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -609,7 +682,7 @@ case 22: container(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 23);
+    } while (choice != 27);
 
     return 0;
 }

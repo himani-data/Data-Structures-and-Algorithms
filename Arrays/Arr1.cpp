@@ -464,7 +464,22 @@ void remove_elem(int arr[],int size){
 
 }
 
+// container with most water
+//Naive Aproach
+void container(int arr[],int size){
+    int max_capacity=0;
+    for(int i=0;i<size;i++){
+        for(int j=i+1;j<size;j++){ 
+            int w=j-i;
+            int curr=min(arr[i],arr[j]);
+            int capacity=curr*w;
+            max_capacity=max(capacity,max_capacity);
 
+        }
+  }
+
+cout<<"Max capacity is: "<<max_capacity<<"\n";
+}
 
 
 
@@ -510,7 +525,8 @@ int main()
     cout<<"19. Merge 2 sorted arrays and find the median"<<endl;
     cout<<"20. Median of 2 sorted arrays using merge sort"<<endl;
     cout<<"21. Remove elements that are equal to val"<<endl;
-    cout << "22. Exiting...."<< endl;
+    cout<<"22.Container with most water"<<endl;
+    cout << "23. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -584,7 +600,8 @@ int main()
         case 19:merge();break;
 case 20: findMedianSortedArrays(arr1, size1, arr2, size2);break;
 case 21: remove_elem(arr,size);break;
-            case 22:
+case 22: container(arr,size);break;
+            case 23:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -592,7 +609,7 @@ case 21: remove_elem(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 22);
+    } while (choice != 23);
 
     return 0;
 }

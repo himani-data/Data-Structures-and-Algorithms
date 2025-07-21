@@ -351,7 +351,7 @@ void del_pos(int arr[],int& size){
 
 //Median
 
-//void Median(int arr[],int size)
+//void Median(int arr[],int size)//most naive aproach
 // merge 2 sorted arrays and find median:
 void merge(){
     int arr1[]={1,3,4,5};
@@ -419,7 +419,7 @@ void merge(){
 
     void findMedianSortedArrays(int arr1[], int size1, int arr2[], int size2) {
         int p1 = 0;  // Reset pointers each time before merging
-    int p2 = 0;
+        int p2 = 0;
         int total = size1 + size2;
 
         if (total % 2 == 0) {
@@ -499,7 +499,8 @@ void max_water_optimal_aproach(int arr[],int size){
 }
 
 
-//kdanes algo---->maximum subarray sum:
+//>maximum subarray sum:
+//most naive 
 void max_subarray(int arr[],int size){
     int maxsum=0;
 
@@ -521,6 +522,7 @@ int kadane(int arr[],int size){
 for(int i=0;i<size;i++){
     curr+=arr[i];
     maxsum=max(curr,maxsum);
+    //for edge case atleast we get one time max{-1,-2,-3,-4,-5,-6,-7}--->here all negative hence we need to atleast one max
     if(curr<0){
         curr=0;
     }
@@ -547,6 +549,38 @@ void profit(int arr[],int size){
     }
     cout<<"Profit is: "<<mprofit<<endl;
 }
+
+#include<iostream>
+using namespace std;
+
+// Recursive power function
+double solve(double x, long n) {
+    if (n == 0)
+        return 1;
+    if (n < 0)
+        return solve(1 / x, -n);
+
+    if (n % 2 == 1)  // Odd power
+        return x * solve(x * x, (n - 1) / 2);
+    else             // Even power
+        return solve(x * x, n / 2);
+}
+
+// Function to handle input/output and call solve()
+void myPow() {
+    double x;
+    int n;
+    cout << "Enter number (x): ";
+    cin >> x;
+    cout << "Enter power (n): ";
+    cin >> n;
+
+    double result = solve(x, (long)n);
+
+    cout << x << " raised to the power " << n << " is: " << result << endl;
+}
+
+
 
 int main()
 {
@@ -595,6 +629,7 @@ int main()
     cout<<"24.Maximum Subarray Sum (Brute Force)"<<endl;
     cout<<"25.kadanes Algorithm for max sub array"<<endl;
     cout<<"26.Buy and sell stock"<<endl;
+    cout<<"28.recursive power function"<<endl;
     cout << "27. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
@@ -674,7 +709,8 @@ case 23:max_water_optimal_aproach(arr,size);break;
 case 24:  max_subarray(arr,size);break;
 case 25: kadane(arr,size);break;
 case 26: profit(arr,size);break;
-            case 27:
+case 27: myPow();break;           
+ case 28:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -682,7 +718,7 @@ case 26: profit(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 27);
+    } while (choice != 28);
 
     return 0;
 }

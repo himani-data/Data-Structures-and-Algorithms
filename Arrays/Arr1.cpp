@@ -580,6 +580,30 @@ void myPow() {
     cout << x << " raised to the power " << n << " is: " << result << endl;
 }
 
+//Remove Duplicates from Sorted Array
+void remove(int arr[],int size){
+    int count=1;
+    int a[100];
+    a[0]=arr[0];
+    for(int i=1;i<size;i++){
+      if (arr[i]!=arr[i-1]){
+        a[count++]=arr[i];
+
+      }
+
+    }
+    cout<<"Array of unique elem: {";
+    for(int i=0;i<count;i++){
+     cout<<a[i];
+     if(i!=count -1){
+        cout<<", ";
+    
+} 
+      }
+      cout<<"}"<<endl;
+
+}
+
 
 
 int main()
@@ -630,7 +654,8 @@ int main()
     cout<<"25.kadanes Algorithm for max sub array"<<endl;
     cout<<"26.Buy and sell stock"<<endl;
     cout<<"28.recursive power function"<<endl;
-    cout << "27. Exiting...."<< endl;
+    cout<<"29.Remove Duplicates from Sorted Array"<<endl;
+    cout << "30. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -709,8 +734,9 @@ case 23:max_water_optimal_aproach(arr,size);break;
 case 24:  max_subarray(arr,size);break;
 case 25: kadane(arr,size);break;
 case 26: profit(arr,size);break;
-case 27: myPow();break;           
- case 28:
+case 27: myPow();break; 
+case 28:remove(arr,size);break;
+ case 29:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -718,7 +744,7 @@ case 27: myPow();break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 28);
+    } while (choice != 29);
 
     return 0;
 }

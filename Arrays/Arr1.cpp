@@ -550,6 +550,38 @@ void profit(int arr[],int size){
     cout<<"Profit is: "<<mprofit<<endl;
 }
 
+
+// search in a rotated sorted array
+void search(int arr[],int size){
+    int tar;
+    cout<<"Enter target: "<<endl;
+    cin>>tar;
+
+    
+    int st=0;
+    int end=size-1;
+    while(st<=end){
+        int mid=st+(end-st)/2;
+        if(arr[mid]==tar){
+            cout<<"found "<<arr[mid]<<" at "<<mid<<endl;
+            return;
+        }
+        if(arr[st]<=arr[mid]){
+            if(arr[st]<=tar&&tar<=arr[mid]){
+                end=mid-1;
+            }
+            else{
+                st=mid+1;
+            }
+
+        }
+else{
+    if(arr[mid]<=tar&&tar<=arr[end]){
+    st=mid+1;
+} else{
+    end=mid-1;
+    }
+}}}
 #include<iostream>
 using namespace std;
 
@@ -655,6 +687,30 @@ int main()
 
     int arr1[]={1,3,4,5};
     int arr2[]={2,4,5,7};
+      int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    cout << "\n---- MENU ----" << "\n\n";
+    cout<<"1.show the element"<<endl;
+    cout << "2. Find Minimum Element" << endl;
+    cout << "3. Find Maximum Element" << endl;
+    cout << "4. Find Sum of Array" << endl;
+    cout << "5. Find Average of Array" << endl;
+    cout << "6.Sum_Product_of_min_and_max" << endl;
+    cout << "7. Reverse_Traversal" << endl;
+    cout << "8. Insert at Beginning" << endl;
+    cout << "9. Insert at Position" << endl;
+    cout << "10. Insert at Last" << endl;
+    cout << "11. Find The Elem in Array " << endl;
+    cout << "12. Binary Search" << endl;
+    cout << "13. Two_Sum brute force" << endl;
+    cout << "14. Two_Sum 2 pointer" << endl;
+    cout << "15. Two_Sum optimal" << endl;
+    cout << "16. Delete at Last" << endl;
+    cout << "17. Delete at Beginning" << endl;
+    cout << "18. Delete at position" << endl;
+    cout<<"19. Merge 2 sorted arrays and find the median"<<endl;
+    cout<<"20. Median of 2 sorted arrays using merge sort"<<endl;
     cout<<"21. Remove elements that are equal to val"<<endl;
     cout<<"22.Container with most water"<<endl;
     cout<<"23.Max Water Optimal Aproach using 2 ptr"<<endl;
@@ -664,7 +720,8 @@ int main()
     cout<<"27.recursive power function"<<endl;
     cout<<"28.Remove Duplicates from Sorted Array"<<endl;
     cout<<"29.Longest Common Prefix "<<endl;
-    cout << "30. Exiting...."<< endl;
+    cout<<"30.search in a rotated sorted array"<<endl;
+    cout <<"31. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -746,7 +803,8 @@ case 26: profit(arr,size);break;
 case 27: myPow();break; 
 case 28:remove(arr,size);break;
 case 29: LCP();break;
- case 30:
+case 30: search(arr,size);break;
+ case 31:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -754,34 +812,9 @@ case 29: LCP();break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 30);
+    } while (choice != 31);
 
     return 0;
 }
 
 
-
-      int size1 = sizeof(arr1) / sizeof(arr1[0]);
-    int size2 = sizeof(arr2) / sizeof(arr2[0]);
-
-    cout << "\n---- MENU ----" << "\n\n";
-    cout<<"1.show the element"<<endl;
-    cout << "2. Find Minimum Element" << endl;
-    cout << "3. Find Maximum Element" << endl;
-    cout << "4. Find Sum of Array" << endl;
-    cout << "5. Find Average of Array" << endl;
-    cout << "6.Sum_Product_of_min_and_max" << endl;
-    cout << "7. Reverse_Traversal" << endl;
-    cout << "8. Insert at Beginning" << endl;
-    cout << "9. Insert at Position" << endl;
-    cout << "10. Insert at Last" << endl;
-    cout << "11. Find The Elem in Array " << endl;
-    cout << "12. Binary Search" << endl;
-    cout << "13. Two_Sum brute force" << endl;
-    cout << "14. Two_Sum 2 pointer" << endl;
-    cout << "15. Two_Sum optimal" << endl;
-    cout << "16. Delete at Last" << endl;
-    cout << "17. Delete at Beginning" << endl;
-    cout << "18. Delete at position" << endl;
-    cout<<"19. Merge 2 sorted arrays and find the median"<<endl;
-    cout<<"20. Median of 2 sorted arrays using merge sort"<<endl;

@@ -529,7 +529,7 @@ for(int i=0;i<size;i++){
 }
 cout<<"Max sum of subarray is: "<<maxsum<<endl;
 }
-
+//hii
 
 //Buy and sell stock
 void profit(int arr[],int size){

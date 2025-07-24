@@ -669,6 +669,79 @@ void LCP(){
      cout << "Longest Common Prefix: " << orig << endl;
 }}
 
+                                             
+//Peak Index in Moutain Array--->0,3,8,9,5,2/
+//naive aproach
+void peak(int arr[],int size){
+   for(int i=0;i<size;i++){
+    if (arr[i]>arr[i-1]&&arr[i]>arr[i+1]){
+        cout<<"Peak Index of Max Array is: "<<i<<endl;
+    }
+   }
+
+}
+
+
+// optimal aproach t.c-->O(loGN)
+//Binary Search
+void peak_bin(int arr[],int size){
+  int  st=1;
+  int  end=size-2;// why this?-->because st and end can never be a peak of mountain
+  while(st<=end){
+   int mid=st+(end-st)/2;
+    if(arr[mid-1]<arr[mid]&&arr[mid]>arr[mid+1]){
+        cout<<"Peak Index of Mountain array: "<<arr[mid]<<endl;
+        return;
+    }
+    else if(arr[mid-1]<arr[mid]){
+       st=mid+1;
+    }
+    else{
+        end=mid-1;
+    }
+  }
+  return;
+}
+
+// Single Element in a sorted array
+//Naive
+// void single(int arr[],int size){
+// for(int i=0;i<size-1;i+=2){
+    
+//       if(arr[i]!=arr[i+1] && arr[i]!=arr[i-1]){
+//       cout<<i<<endl;
+//       return;
+       
+//     }
+// }
+//         cout<<size-1;
+
+// }
+
+
+
+//optimal
+
+void single(int arr[],int size){
+for(int i=0;i<size-1;i+=2){
+    
+      if(arr[i]!=arr[i+1] && arr[i]!=arr[i-1]){
+      cout<<i<<endl;
+      return;
+       
+    }
+}
+        cout<<size-1;
+
+}
+
+
+
+
+
+
+
+
 
 int main()
 {
@@ -721,7 +794,10 @@ int main()
     cout<<"28.Remove Duplicates from Sorted Array"<<endl;
     cout<<"29.Longest Common Prefix "<<endl;
     cout<<"30.search in a rotated sorted array"<<endl;
-    cout <<"31. Exiting...."<< endl;
+    cout<<"31.Peak Index in Mountain Array"<<endl;
+    cout<<"32..Peak Index in Mountain Array(optimal)"<<endl;
+    cout<<"33. single element in a sorted array"<<endl;
+        cout <<"34. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -804,7 +880,10 @@ case 27: myPow();break;
 case 28:remove(arr,size);break;
 case 29: LCP();break;
 case 30: search(arr,size);break;
- case 31:
+case 31: peak(arr,size);break;
+case 32 : peak_bin(arr,size);break;
+case 33: single(arr,size);break;
+ case 34:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -812,7 +891,7 @@ case 30: search(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 31);
+    } while (choice != 34);
 
     return 0;
 }

@@ -703,10 +703,14 @@ void peak_bin(int arr[],int size){
   return;
 }
 
-// Single Element in a sorted array
-//Naive
+
+
+
+
+// // Naive
+
 // void single(int arr[],int size){
-// for(int i=0;i<size-1;i+=2){
+// for(int i=0;i<size-1;i++){
     
 //       if(arr[i]!=arr[i+1] && arr[i]!=arr[i-1]){
 //       cout<<i<<endl;
@@ -718,27 +722,125 @@ void peak_bin(int arr[],int size){
 
 // }
 
-
-
-//optimal
+// single element in sorted array
+//optimal aproach
 
 void single(int arr[],int size){
-for(int i=0;i<size-1;i+=2){
-    
-      if(arr[i]!=arr[i+1] && arr[i]!=arr[i-1]){
-      cout<<i<<endl;
+    int st=0;
+    int end=size-1;
+    if (size==1){
+    cout<<arr[0];
+    return;
+}
+
+    while(st<=end){
+        int mid=st+(end-st)/2; //handling if rthe 1 st elem 
+        //comes a smid then no need  to check for mid-1 as it do not exists .
+        //simply compare to the right elem.
+        if(mid==0 && arr[0]!=arr[1]){
+        cout<<arr[mid]<<endl;
+        return;
+    }
+    else {
+        if(mid==size-1 && arr[mid]!=arr[mid-1]){
+            cout<<arr[mid]<<endl;
+            return;
+        }}
+
+      if(arr[mid]!=arr[mid+1] && arr[mid]!=arr[mid-1]){
+      cout<<mid<<endl;
       return;
        
+    
+}
+else if(mid%2==0){
+if (arr[mid]==arr[mid-1]){
+    end=mid-1;
+}
+else st=st+1;
+}
+
+else{
+    if (arr[mid]==arr[mid-1]){
+        st=mid+1;
     }
+    else end=mid-1;
 }
-        cout<<size-1;
-
+}
 }
 
 
+// Sorting Algorithm
+
+//"1. Bubble Sort":
+ void bubble(int arr[],int size){
+    
+    for(int i=0;i<size-1;i++){
+        bool isswap=false;
+        for(int j=0;j<size-i-1;j++){
+            if(arr[j]>arr[j+1]){
+                swap(arr[j],arr[j+1]);
+                isswap=true;
+            }
+        }
+        if(!isswap){
+            //array is already sorted 
+            return;
+        }
+    }
+  show(arr,size);
+ }
 
 
 
+  void rbubble(int arr[],int size){
+    
+    for(int i=0;i<size-1;i++){
+        bool isswap=false;
+        for(int j=0;j<size-i-1;j++){
+            if(arr[j]<arr[j+1]){
+                swap(arr[j],arr[j+1]);
+                isswap=true;
+            }
+        }
+        if(!isswap){
+            //array is already sorted 
+            return;
+        }
+    }
+  show(arr,size);
+ }
+// selection sort
+void selection(int arr[],int size){
+    
+    for(int i=0;i<size;i++){
+        int min=i;
+        for(int j=i+1;j<size;j++){
+            if(arr[j]<arr[min]){
+                min=j;            }
+        }
+        swap(arr[i],arr[min]);
+    }
+show(arr,size);
+}
+
+
+//insertion sort
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int key = arr[i]; // current element
+        int j = i - 1;
+        
+        // Move elements greater than key to one position ahead
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        // Insert the key at correct position
+        arr[j + 1] = key;
+    }
+    show(arr,size);
+}
 
 
 
@@ -797,7 +899,10 @@ int main()
     cout<<"31.Peak Index in Mountain Array"<<endl;
     cout<<"32..Peak Index in Mountain Array(optimal)"<<endl;
     cout<<"33. single element in a sorted array"<<endl;
-        cout <<"34. Exiting...."<< endl;
+    cout<<"34. Bubble sort"<<endl;
+    cout<<"35.Selection sort"<<endl;
+    cout<<"36.Insertion sort"<<endl;
+        cout <<"37. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -883,7 +988,10 @@ case 30: search(arr,size);break;
 case 31: peak(arr,size);break;
 case 32 : peak_bin(arr,size);break;
 case 33: single(arr,size);break;
- case 34:
+case 34: rbubble(arr,size);break;
+case 35:selection(arr,size);break;
+case 36: insertionSort(arr,size);break;
+ case 37:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -891,7 +999,7 @@ case 33: single(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 34);
+    } while (choice != 37);
 
     return 0;
 }

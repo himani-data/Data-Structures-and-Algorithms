@@ -918,8 +918,40 @@ void sort(int arr[],int size){
 }
 
 
+// Lexicographic next permutation
 
+void reverseArray(int arr[], int start, int end) {
+    while(start < end) {
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
+}
+  void next(int arr[],int size){
+    int piv=-1;
+    
+    
+    for(int i=size-1;i>=0;i--){
+        if (arr[i]<arr[i+1]){
+            piv=i;
+         break;
+        }
+    }
+if(piv==-1){
+    reverseArray(arr,0,size-1);
+    return;
+}
+    for(int i=size-1;i>piv;i--){
+        if(arr[i]>arr[piv]){
+            swap(arr[i],arr[piv]);
+            break;
+        }
+    }
+  
 
+reverseArray(arr, piv + 1, size - 1);
+show(arr,size);
+}
 int main()
 {
     int size, choice;
@@ -978,8 +1010,9 @@ int main()
     cout<<"35.Selection sort"<<endl;
     cout<<"36.Insertion sort"<<endl;
     cout<<"37.sort an array os 0's ,1's and 2's"<<endl;
+    cout<<"38. Next Permutation order"<<endl;
 
-        cout <<"38. Exiting...."<< endl;
+        cout <<"39. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -1069,7 +1102,8 @@ case 34: rbubble(arr,size);break;
 case 35:selection(arr,size);break;
 case 36: insertionSort(arr,size);break;
 case 37:sort(arr,size);break;
- case 38:
+case 38:next(arr,size);break;
+ case 39:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -1077,7 +1111,7 @@ case 37:sort(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 38);
+    } while (choice != 39);
 
     return 0;
 }

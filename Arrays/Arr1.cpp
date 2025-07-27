@@ -842,6 +842,81 @@ void insertionSort(int arr[], int size) {
     show(arr,size);
 }
 
+// insertion sort reverse
+ void rinverse(int arr[],int size){
+    for(int i=1;i<size;i++){
+    int curr=i;
+    int prev=i-1;
+   while(prev>=0&&arr[prev]<arr[curr]){
+    arr[prev+1]=arr[prev];
+
+   }
+   arr[prev+1]=curr;
+ }
+show(arr,size);
+ }
+
+
+// // sort an array os 0's ,1's and 2's:---->naive
+// void sort(int arr[],int size){
+//     int count0=0;
+//     int count1=0;
+//     int count2=0;
+//     int indx=0;
+
+//     for(int i=0;i<size;i++){
+//         if(arr[i]==0){
+//             count0++;
+//         }
+//         else if(arr[i]==1){
+//             count1++;
+//         }
+//         else count2++;
+
+//     }
+//     for(int i=0;i<count0;i++){
+//        arr[indx++]=0;
+//     }
+//     for(int i=0;i<count1;i++){
+//        arr[indx++]=1;
+//     }for(int i=0;i<count2;i++){
+//        arr[indx++]=2;
+//     }
+//     show(arr,size);
+// }
+
+//optim
+
+
+// sort an array os 0's ,1's and 2's:---->naive
+//dutch national flag algorithm
+void sort(int arr[],int size){
+    int count0=0;
+    int count1=0;
+    int count2=0;
+    int indx=0;
+
+    for(int i=0;i<size;i++){
+        if(arr[i]==0){
+            count0++;
+        }
+        else if(arr[i]==1){
+            count1++;
+        }
+        else count2++;
+
+    }
+    for(int i=0;i<count0;i++){
+       arr[indx++]=0;
+    }
+    for(int i=0;i<count1;i++){
+       arr[indx++]=1;
+    }for(int i=0;i<count2;i++){
+       arr[indx++]=2;
+    }
+    show(arr,size);
+}
+
 
 
 
@@ -902,7 +977,9 @@ int main()
     cout<<"34. Bubble sort"<<endl;
     cout<<"35.Selection sort"<<endl;
     cout<<"36.Insertion sort"<<endl;
-        cout <<"37. Exiting...."<< endl;
+    cout<<"37.sort an array os 0's ,1's and 2's"<<endl;
+
+        cout <<"38. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -991,7 +1068,8 @@ case 33: single(arr,size);break;
 case 34: rbubble(arr,size);break;
 case 35:selection(arr,size);break;
 case 36: insertionSort(arr,size);break;
- case 37:
+case 37:sort(arr,size);break;
+ case 38:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -999,7 +1077,7 @@ case 36: insertionSort(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 37);
+    } while (choice != 38);
 
     return 0;
 }

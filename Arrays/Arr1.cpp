@@ -15,6 +15,7 @@ void show(int arr[], int size)
             cout << ", ";
     }
     cout << " }" << "\n\n";
+    //cout
 }
 
 // Minimum Element of an array;
@@ -28,6 +29,7 @@ int minimum(int arr[], int size)
         if (arr[i] < min)
         {
             min = arr[i];
+            
         }
     }
     cout << "Minimum element of the array is: " << min << "\n\n";

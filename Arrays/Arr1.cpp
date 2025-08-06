@@ -27,6 +27,7 @@ int minimum(int arr[], int size)
     for (int i = 0; i < size; i++)
     {
         if (arr[i] < min)
+        //
         {
             min = arr[i];
             
@@ -793,7 +794,7 @@ else{
   show(arr,size);
  }
 
-
+// reverse of bubble 
 
   void rbubble(int arr[],int size){
     
@@ -892,7 +893,7 @@ show(arr,size);
 
 // sort an array os 0's ,1's and 2's:---->naive
 //dutch national flag algorithm
-void sort(int arr[],int size){
+void sort_0s(int arr[],int size){
     int count0=0;
     int count1=0;
     int count2=0;
@@ -1103,7 +1104,7 @@ case 33: single(arr,size);break;
 case 34: rbubble(arr,size);break;
 case 35:selection(arr,size);break;
 case 36: insertionSort(arr,size);break;
-case 37:sort(arr,size);break;
+case 37:sort_0s(arr,size);break;
 case 38:next(arr,size);break;
  case 39:
             cout << "Exiting..." << endl;

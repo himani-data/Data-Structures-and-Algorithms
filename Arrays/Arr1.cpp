@@ -955,6 +955,56 @@ if(piv==-1){
 reverseArray(arr, piv + 1, size - 1);
 show(arr,size);
 }
+
+
+//merge sort 
+void Merge(vector<int> &arr,int mid,int start,int end){
+    vector<int> temp;
+    int i=start,j=mid+1;
+
+    while(i<=mid && j<=end){
+        if(arr[i]<=arr[j]){
+            temp.push_back(arr[i++]);
+        }else{
+            temp.push_back(arr[j++]);
+        }
+        
+    }
+    while(i<=mid){
+        temp.push_back(arr[i++]);
+    }
+
+     while(j<=end){
+        temp.push_back(arr[j++]);
+    }
+
+    for(int i=0;i<temp.size();i++){
+        arr[i+start]=temp[i];
+    }
+}
+
+
+void mergesort(vector<int> &arr ,int start,int end){
+    
+    if(start<end){
+        int mid=start+(end-start)/2;
+        mergesort(arr,start,mid);//left half
+        mergesort(arr,mid+1,end);//right half
+
+        Merge(arr,start,mid,end);
+        
+    }
+   
+}
+
+
+
+
+
+
+
+
+
 int main()
 {
     int size, choice;
@@ -1014,8 +1064,8 @@ int main()
     cout<<"36.Insertion sort"<<endl;
     cout<<"37.sort an array os 0's ,1's and 2's"<<endl;
     cout<<"38. Next Permutation order"<<endl;
-
-        cout <<"39. Exiting...."<< endl;
+    cout<<"39.merge sort"<<endl;
+        cout <<"40. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -1106,7 +1156,10 @@ case 35:selection(arr,size);break;
 case 36: insertionSort(arr,size);break;
 case 37:sort_0s(arr,size);break;
 case 38:next(arr,size);break;
- case 39:
+ case 39:{ vector<int> arr = {2, 9, 8, 7, 0, 5, 8};
+    
+    mergesort(arr, 0, arr.size() - 1);break;}
+ case 40:
             cout << "Exiting..." << endl;
             break;
         // case 9:

@@ -957,8 +957,10 @@ show(arr,size);
 }
 
 
+
+
 //merge sort 
-void Merge(vector<int> &arr,int mid,int start,int end){
+void Merge(vector<int> &arr,int start, int mid,int end){
     vector<int> temp;
     int i=start,j=mid+1;
 
@@ -981,21 +983,32 @@ void Merge(vector<int> &arr,int mid,int start,int end){
     for(int i=0;i<temp.size();i++){
         arr[i+start]=temp[i];
     }
+      Merge(arr,start,mid,end);
+     
 }
 
 
 void mergesort(vector<int> &arr ,int start,int end){
-    
+
     if(start<end){
         int mid=start+(end-start)/2;
         mergesort(arr,start,mid);//left half
-        mergesort(arr,mid+1,end);//right half
+        mergesort(arr,mid+1,end);//right half  
 
         Merge(arr,start,mid,end);
+            for (int num : arr)
+    cout << num << " ";
+cout << endl;
+
         
     }
+      
+    
+
    
 }
+
+//
 
 
 

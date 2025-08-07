@@ -1002,13 +1002,42 @@ cout << endl;
 
         
     }
-      
-    
-
-   
+ 
 }
 
-//
+// 3 sum problem
+
+//most naive aproach
+void threesum(vector<int> &nums){
+    int n=nums.size();
+    set<vector<int>> result;//to store unique triplets
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            for(int k=j+1;k<n;k++){
+                if(nums[i]+nums[j]+nums[k]==0){
+                    cout << "Triplet Found: " << nums[i] << ", " << nums[j] << ", " << nums[k] << endl;
+
+                    vector<int> triplet ={nums[i],nums[j],nums[k]};
+
+                    sort(triplet.begin(),triplet.end());
+                    result.insert(triplet);
+                }
+            }
+        }
+    }
+    for (auto triplet : result) {
+        cout << "[";
+for(int num:triplet){
+    cout<<num<<" ";
+    if (num != triplet.size() - 1){
+        cout<<", ";
+    }
+}cout << "]";
+cout<<endl;
+}
+}
+
+
 
 
 
@@ -1078,7 +1107,8 @@ int main()
     cout<<"37.sort an array os 0's ,1's and 2's"<<endl;
     cout<<"38. Next Permutation order"<<endl;
     cout<<"39.merge sort"<<endl;
-        cout <<"40. Exiting...."<< endl;
+    cout<<"40. Three Sum Aproach most naive"<<endl;
+        cout <<"41. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -1172,7 +1202,11 @@ case 38:next(arr,size);break;
  case 39:{ vector<int> arr = {2, 9, 8, 7, 0, 5, 8};
     
     mergesort(arr, 0, arr.size() - 1);break;}
- case 40:
+    case 40:{vector<int> nums = {2, 9, 8, 7, 0, 5, -8};
+    threesum(nums);break;
+
+    }
+ case 41:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -1180,7 +1214,7 @@ case 38:next(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 39);
+    } while (choice != 41);
 
     return 0;
 }

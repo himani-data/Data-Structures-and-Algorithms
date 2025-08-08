@@ -1008,24 +1008,56 @@ cout << endl;
 // 3 sum problem
 
 //most naive aproach
-void threesum(vector<int> &nums){
-    int n=nums.size();
+// void threesum(vector<int> &nums){
+//     int n=nums.size();
+//     set<vector<int>> result;//to store unique triplets
+//     for(int i=0;i<n;i++){
+//         for(int j=i+1;j<n;j++){
+//             for(int k=j+1;k<n;k++){
+//                 if(nums[i]+nums[j]+nums[k]==0){
+//                     cout << "Triplet Found: " << nums[i] << ", " << nums[j] << ", " << nums[k] << endl;
+
+//                     vector<int> triplet ={nums[i],nums[j],nums[k]};
+
+//                     sort(triplet.begin(),triplet.end());
+//                     result.insert(triplet);
+//                 }
+//             }
+//         }
+//     }
+//     for (auto triplet : result) {
+//         cout << "[";
+// for(int num:triplet){
+//     cout<<num<<" ";
+//     if (num != triplet.size() - 1){
+//         cout<<", ";
+//     }
+// }cout << "]";
+// cout<<endl;
+// }
+// }
+
+
+
+// better aproach
+void threesum(vector<int> &arr){
+    int n=arr.size();
     set<vector<int>> result;//to store unique triplets
     for(int i=0;i<n;i++){
+        unordered_set <int> seen;
         for(int j=i+1;j<n;j++){
-            for(int k=j+1;k<n;k++){
-                if(nums[i]+nums[j]+nums[k]==0){
-                    cout << "Triplet Found: " << nums[i] << ", " << nums[j] << ", " << nums[k] << endl;
-
-                    vector<int> triplet ={nums[i],nums[j],nums[k]};
-
-                    sort(triplet.begin(),triplet.end());
-                    result.insert(triplet);
-                }
-            }
+            int third=-arr[i]-arr[j];
+            if(seen.find(third) !=seen.end()){
+            vector<int> triplet={arr[i],arr[j],third};
+            sort(triplet.begin(),triplet.end());
+            result.insert(triplet);
         }
-    }
-    for (auto triplet : result) {
+            seen.insert(arr[j]);
+            
+            }}
+    
+
+              for (auto triplet : result) {
         cout << "[";
 for(int num:triplet){
     cout<<num<<" ";
@@ -1035,14 +1067,13 @@ for(int num:triplet){
 }cout << "]";
 cout<<endl;
 }
-}
+
+        }
 
 
 
 
-
-
-
+// best aproach
 
 
 
@@ -1202,8 +1233,9 @@ case 38:next(arr,size);break;
  case 39:{ vector<int> arr = {2, 9, 8, 7, 0, 5, 8};
     
     mergesort(arr, 0, arr.size() - 1);break;}
-    case 40:{vector<int> nums = {2, 9, 8, 7, 0, 5, -8};
-    threesum(nums);break;
+    
+    case 40:{vector<int> arr = {2, 9, 8, 7, 0, 5, -8};
+    threesum(arr);break;
 
     }
  case 41:

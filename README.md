@@ -1,4 +1,4 @@
-# Data Structures & Algorithms Practice Repository
+# Data Structures & Algorithms Practice 
 
 This repository contains my personal practice of Data Structures and Algorithms (DSA) using C++.
 
@@ -23,4 +23,5 @@ This repository contains my personal practice of Data Structures and Algorithms 
 
 ---
 
-Feel free to explore and suggest improvements!
+
+>Feel free to explore 

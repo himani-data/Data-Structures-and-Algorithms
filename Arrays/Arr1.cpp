@@ -1040,41 +1040,87 @@ cout << endl;
 
 
 // better aproach
-void threesum(vector<int> &arr){
-    int n=arr.size();
-    set<vector<int>> result;//to store unique triplets
-    for(int i=0;i<n;i++){
-        unordered_set <int> seen;
-        for(int j=i+1;j<n;j++){
-            int third=-arr[i]-arr[j];
-            if(seen.find(third) !=seen.end()){
-            vector<int> triplet={arr[i],arr[j],third};
-            sort(triplet.begin(),triplet.end());
-            result.insert(triplet);
-        }
-            seen.insert(arr[j]);
+// void threesum(vector<int> &arr){
+//     int n=arr.size();
+//     set<vector<int>> result;//to store unique triplets
+//     for(int i=0;i<n;i++){
+//         unordered_set <int> seen;
+//         for(int j=i+1;j<n;j++){
+//             int third=-arr[i]-arr[j];
+//             if(seen.find(third) !=seen.end()){
+//             vector<int> triplet={arr[i],arr[j],third};
+//             sort(triplet.begin(),triplet.end());
+//             result.insert(triplet);
+//         }
+//             seen.insert(arr[j]);
             
-            }}
+//             }}
     
 
-              for (auto triplet : result) {
-        cout << "[";
-for(int num:triplet){
-    cout<<num<<" ";
-    if (num != triplet.size() - 1){
-        cout<<", ";
-    }
-}cout << "]";
-cout<<endl;
-}
+//               for (auto triplet : result) {
+//         cout << "[";
+// for(int num:triplet){
+//     cout<<num<<" ";
+//     if (num != triplet.size() - 1){
+//         cout<<", ";
+//     }
+// }cout << "]";
+// cout<<endl;
+// }
 
-        }
+//         }
 
 
 
 
 // best aproach
 
+void threesum(vector<int> &arr){
+    vector<vector<int>> result;
+    int n=arr.size();
+     
+    //to store unique triplets
+    sort(arr.begin(),arr.end());
+    for(int i=0;i<n;i++){
+        if(i>0 && arr[i]==arr[i-1]) continue;
+            int j=i+1;
+            int k=n-1;
+            
+        while(j<k){
+            int sum=arr[i]+arr[j]+arr[k];
+            
+            if(sum<0){
+                j++;}
+                else if(sum>0){
+                    k--;
+            }
+            else{
+                 result.push_back({arr[i],arr[j],arr[k]});
+                 j++;
+                 k--;
+                 while(j<k && arr[j]==arr[j-1])
+                 j++;
+
+            }
+
+        }
+    }
+    
+
+         
+      cout << "[";
+    for (int i = 0; i < result.size(); i++) {
+        cout << "[";
+        for (int j = 0; j < result[i].size(); j++) {
+            cout << result[i][j];
+            if (j != result[i].size() - 1) cout << ", ";
+        }
+        cout << "]";
+        if (i != result.size() - 1) cout << ", ";
+    }
+    cout << "]\n";
+}
+    
 
 
 

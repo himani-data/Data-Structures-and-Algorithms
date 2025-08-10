@@ -1120,7 +1120,57 @@ void threesum(vector<int> &arr){
     }
     cout << "]\n";
 }
-    
+
+
+// FOUR SUM
+void foursum(vector<int> &arr){
+    sort(arr.begin(),arr.end());
+    int tar=0;
+    vector<vector<int>> result;
+    int n=arr.size();
+    for(int i=0;i<n;i++){
+        if(i>0 && arr[i]==arr[i-1]) continue;
+        for(int j=i+1;j<n;j++){
+                if(j > i + 1 && arr[j] == arr[j-1]) continue;
+
+            int p=j+1;
+            int q=n-1;
+            while(p<q){
+                long long sum=(long long)arr[i]+(long long)arr[j]
+                +(long long)arr[p]+(long long)arr[q];
+
+                if(sum<tar){
+                    p++;
+                }
+                else if(sum>tar){
+                    q--;
+                }
+                else{
+                    result.push_back({arr[i],arr[j],arr[p],arr[q]});
+                    p++;q--;
+                    while(p<q && arr[p]==arr[p-1]);p++;
+                }
+            }
+            j++;
+                         while(j<n && arr[j]==arr[j-1]) continue;
+
+        }
+                     
+    }
+  cout << "[";
+    for (int i = 0; i < result.size(); i++) {
+        cout << "[";
+        for (int j = 0; j < result[i].size(); j++) {
+            cout << result[i][j];
+            if (j != result[i].size() - 1) cout << ", ";
+        }
+        cout << "]";
+        if (i != result.size() - 1) cout << ", ";
+    }
+    cout << "]\n";
+
+}
+
 
 
 
@@ -1185,7 +1235,10 @@ int main()
     cout<<"38. Next Permutation order"<<endl;
     cout<<"39.merge sort"<<endl;
     cout<<"40. Three Sum Aproach most naive"<<endl;
-        cout <<"41. Exiting...."<< endl;
+    cout<<"41. Four sum aproach most optimal"<<endl;
+    
+
+        cout <<"42. Exiting...."<< endl;
     // cout<<endl;
     //  cout << "Enter your choice: ";
     //  cin >> choice;
@@ -1284,7 +1337,12 @@ case 38:next(arr,size);break;
     threesum(arr);break;
 
     }
- case 41:
+
+    case 41:{
+        vector<int>arr={2,2,-1,-1,1,0,2,1,-1};
+        foursum(arr);break;
+    }
+ case 42:
             cout << "Exiting..." << endl;
             break;
         // case 9:
@@ -1292,7 +1350,7 @@ case 38:next(arr,size);break;
             cout << " Oops....Invalid choice! Try again.,Hare Krishna !!!" << endl;
         }
 
-    } while (choice != 41);
+    } while (choice != 42);
 
     return 0;
 }

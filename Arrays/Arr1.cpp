@@ -454,7 +454,7 @@ void remove_elem(int arr[],int size){
         if(arr[i]!=val){
             arr[k++]=arr[i];
         }}
-     cout<<"\n New Array after removing"<<val<<"{";
+     cout<<"\n New Array after removing: "<<val<<"{";
      for(int i=0;i<k;i++){
         cout<<arr[i];
         if(i!=k-1){

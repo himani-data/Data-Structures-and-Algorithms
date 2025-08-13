@@ -1171,7 +1171,13 @@ void foursum(vector<int> &arr){
 
 }
 
-
+// void duplicates(int arr){}
+void duplicates(vector<int> &arr){
+    sort(arr.begin(),arr.end());
+    int n=arr.size();
+    for(int i=0;i<n;i++){
+            if(arr[i]==){}
+}}
 
 
 int main()

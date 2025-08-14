@@ -1,151 +1,159 @@
-#include<iostream>
-// #include<cmath>
+#include <iostream>
 using namespace std;
-class node{
-    public:
+
+class node {
+public:
     int val;
-    node * next;
-
+    node* next;
     node(int value) : val(value), next(nullptr) {}
-
 };
 
-class singlyLinkedList{
-
+class singlyLinkedList {
     node* head;
 
 public:
     singlyLinkedList() {
-        
         head = nullptr;
     }
 
-
-void insertAtBeginning(int x){
-
-    node* newnode = new node(x);
-    newnode->next = head;
-
-    head=newnode;
-
-}
-
-void insertAtPosition(int x,int pos){
-    node*  newnode= new node(x);
-    if(pos==0){
-        insertAtBeginning(x);
-        return;
-}
-    int count=1;
-    node* temp=head;
-    while(count<pos-1 && temp->next!=NULL){
-        temp=temp->next;
-        temp++;
-        if(temp==nullptr){
-            cout<<"Position out of range"<<endl;
-        }else{
-            newnode->next=temp->next;
-            temp->next=newnode;
-        }
-        
+    void insertAtBeginning(int x) {
+        node* newnode = new node(x);
+        newnode->next = head;
+        head = newnode;
     }
-}
 
-void insertAtEnd(int x) {
-    node* newnode = new node(x);
-    if(head==nullptr){
-        head=newnode;
+    void insertAtPosition(int x, int pos) {
+        if (pos == 0) {
+            insertAtBeginning(x);
+            return;
         }
-        else{
-            node* temp=head;
-            while(temp->next!=nullptr){
-                temp=temp->next;}
-                newnode->next=nullptr;
-                temp->next=newnode;
-                }
 
+        node* newnode = new node(x);
+        node* temp = head;
+        int count = 0;
+
+        while (temp != nullptr && count < pos - 1) {
+            temp = temp->next;
+            count++;
+        }
+
+        if (temp == nullptr) {
+            cout << "Position out of range" << endl;
+            delete newnode;
+            return;
+        }
+
+        newnode->next = temp->next;
+        temp->next = newnode;
+    }
+
+    void insertAtEnd(int x) {
+        node* newnode = new node(x);
+        if (head == nullptr) {
+            head = newnode;
+        } else {
+            node* temp = head;
+            while (temp->next != nullptr) {
+                temp = temp->next;
             }
-
-
-void display(){
-    node* temp = head;
-    while (temp != nullptr) {
-        cout << temp->val << " -> ";
-        temp = temp->next;
+            temp->next = newnode;
+        }
     }
-cout<<"nullptr"<<endl;
 
-}
+    void display() {
+        node* temp = head;
+        while (temp != nullptr) {
+            cout << temp->val << " -> ";
+            temp = temp->next;
+        }
+        cout << "nullptr" << endl;
+    }
 
+    void deleteAtBeg() {
+        if (head == nullptr) {
+            cout << "List is empty" << endl;
+            return;
+        }
+        node* temp = head;
+        head = head->next;
+        delete temp;
+    }
 
-void deleteAtBeg(){
-    if(head==nullptr){
-        cout<<"List is empty"<<endl;
-        return;
+    void deleteAtEnd() {
+        if (head == nullptr) {
+            cout << "List is empty" << endl;
+            return;
+        }
+        if (head->next == nullptr) { // only one node
+            delete head;
+            head = nullptr;
+            return;
+        }
+        node* temp = head;
+        while (temp->next->next != nullptr) {
+            temp = temp->next;
+        }
+        delete temp->next;
+        temp->next = nullptr;
+    }
+}; // ✅ Properly close the class here
 
-}
-else{
-    node* temp=head;
-    head=head->next;
-    delete temp;
-}
-}
-
-int main(){
+int main() {
     singlyLinkedList l;
-    do{
-        cout<<"1.Insert at beginning"<<endl;
-        cout<<"2.Insert at position"<<endl;
-        cout<<"3.insertAtEnd"<<endl;
-        cout<<"4.Display"<<endl;
-        cout<<"5.Delete from beginning"<<endl;
-        cout<<"6.Exit"<<endl;
+    do {
+        cout << "\n1. Insert at beginning" << endl;
+        cout << "2. Insert at position" << endl;
+        cout << "3. Insert at end" << endl;
+        cout << "4. Display" << endl;
+        cout << "5. Delete from beginning" << endl;
+        cout << "6. Delete from end" << endl;
+        cout << "7. Exit" << endl;
+
         int choice;
-        cout<<"Enter your choice"<<endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-        cin>>choice;
-
-        switch(choice){
-            case 1:
-            cout << "Enter value to insert: ";
-            int value;
+        switch (choice) {
+            case 1: {
+                int value;
+                cout << "Enter value to insert: ";
                 cin >> value;
                 l.insertAtBeginning(value);
                 break;
-
-     case 2:
+            }
+            case 2: {
+                int x, pos;
                 cout << "Enter value to insert: ";
-                int x,pos;
                 cin >> x;
-                cout<<"Enter position"<<endl;
-                cin>>pos;
-                l.insertAtPosition(x,pos);
+                cout << "Enter position: ";
+                cin >> pos;
+                l.insertAtPosition(x, pos);
                 break;
-                case 3:
+            }
+            case 3: {
+                int x;
                 cout << "Enter value to insert: ";
-                
-                cin>>x;
+                cin >> x;
                 l.insertAtEnd(x);
                 break;
-                case 4:
+            }
+            case 4:
                 l.display();
                 break;
-                case 5:
+            case 5:
                 l.deleteAtBeg();
-                cout<<"deleted "<<endl;
+                cout << "Deleted" << endl;
                 break;
-
-                case 6:
+            case 6:
+                l.deleteAtEnd();
+                cout << "Deleted at end " << endl;
+                break;
+            case 7:
                 return 0;
-                default:
+            default:
                 cout << "Invalid choice! Please try again.\n";
         }
-    } while(true);
+    } while (true);
+
     return 0;
-
-
 }
-    
-    
-   
-};

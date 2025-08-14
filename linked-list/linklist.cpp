@@ -96,7 +96,30 @@ public:
         delete temp->next;
         temp->next = nullptr;
     }
-}; // ✅ Properly close the class here
+
+
+    void deleteAtPos(int pos) {
+        if (head == nullptr) {
+            cout << "List is empty" << endl;
+            return;}
+            if (pos == 0) {
+                deleteAtBeg();
+                return;}
+                node* temp = head;
+                int count = 0;
+                while (temp->next != nullptr && count < pos - 1) {
+                    temp = temp->next;
+                    count++;
+                    }
+                    if (temp->next == nullptr) {
+                        cout << "Position out of range" << endl;
+                        return;}
+                        node* nodeToDelete = temp->next;
+                        temp->next = temp->next->next;
+                        delete nodeToDelete;
+                    }
+        
+        }; // ✅ Properly close the class here
 
 int main() {
     singlyLinkedList l;
@@ -107,7 +130,8 @@ int main() {
         cout << "4. Display" << endl;
         cout << "5. Delete from beginning" << endl;
         cout << "6. Delete from end" << endl;
-        cout << "7. Exit" << endl;
+        cout << "7. Delete at position" << endl;
+        cout << "8. Exit" << endl;
 
         int choice;
         cout << "Enter your choice: ";
@@ -148,7 +172,16 @@ int main() {
                 l.deleteAtEnd();
                 cout << "Deleted at end " << endl;
                 break;
-            case 7:
+                case 7:
+                int pos;
+                cout << "Enter position: ";
+                cin >> pos;
+                
+                l.deleteAtPos(pos);
+                cout << "Deleted at position " << endl;
+
+                break;
+            case 8:
                 return 0;
             default:
                 cout << "Invalid choice! Please try again.\n";

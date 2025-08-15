@@ -118,7 +118,32 @@ public:
                         temp->next = temp->next->next;
                         delete nodeToDelete;
                     }
-        
+
+void reversell(){
+    node* prev = nullptr;
+    node* current = head;
+    node* next = nullptr;
+    while (current != nullptr) {
+        next=current->next;
+        current->next=prev;
+        prev=current;
+                            current=next;
+
+                    }
+                head=prev;
+                }
+
+         void search(int key){
+                    node* temp = head;
+                    while (temp != nullptr) {
+                        if (temp->val == key) {
+                            cout << "Element found" << endl;
+                            return;}
+                            else{
+                                cout<<" Element not found"<<endl;
+                            }
+                }
+            }
         }; // ✅ Properly close the class here
 
 int main() {
@@ -131,7 +156,12 @@ int main() {
         cout << "5. Delete from beginning" << endl;
         cout << "6. Delete from end" << endl;
         cout << "7. Delete at position" << endl;
-        cout << "8. Exit" << endl;
+        cout<<"8. Reverse the list"<<endl;
+        cout << "9. Search" << endl;
+
+
+
+        cout << "10. Exit" << endl;
 
         int choice;
         cout << "Enter your choice: ";
@@ -181,7 +211,16 @@ int main() {
                 cout << "Deleted at position " << endl;
 
                 break;
-            case 8:
+                case 8:
+                l.reversell();
+                l.display();
+                break;
+
+                case 9:
+                l.search(5);
+                break;
+
+            case 10:
                 return 0;
             default:
                 cout << "Invalid choice! Please try again.\n";

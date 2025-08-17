@@ -144,7 +144,20 @@ void reversell(){
                             }
                 }
             }
+
+            void findmiddle(){
+                node* slow = head;
+                node* fast = head;
+                while (fast->next != nullptr && fast->next->next != nullptr) {
+                    slow = slow->next;
+                    fast = fast->next->next;
+                    }
+                    cout << "Middle element is " << slow->val << endl;
+
+            }
         }; // ✅ Properly close the class here
+
+
 
 int main() {
     
@@ -159,10 +172,11 @@ int main() {
         cout << "7. Delete at position" << endl;
         cout<<"8. Reverse the list"<<endl;
         cout << "9. Search" << endl;
+        cout << "10. Find middle" << endl;
 
 
 
-        cout << "10. Exit" << endl;
+        cout << "11. Exit" << endl;
 
         int choice;
         cout << "Enter your choice: ";
@@ -220,8 +234,10 @@ int main() {
                 case 9:
                 l.search(5);
                 break;
-
-            case 10:
+case  10:
+l.findmiddle();
+break;
+            case 11:
                 return 0;
             default:
                 cout << "Invalid choice! Please try again.\n";
